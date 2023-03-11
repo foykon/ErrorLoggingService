@@ -12,6 +12,7 @@ public class VehichleDefectServiceImpl implements VehichleDefectService {
     public VehichleDefectServiceImpl(VehichleDefectRepository vehichleDefectRepository) {
         this.vehichleDefectRepository = vehichleDefectRepository;
     }
+    @Override
     public VehichleDefect saveVehichleDefect(VehichleDefect vehichleDefect){
         return vehichleDefectRepository.save(vehichleDefect);
     }

@@ -24,9 +24,9 @@ public class DefectLocation {
 
 
     @Column(name="defect_location_x")
-    private String defectLocationX;
+    private int defectLocationX;
 
     @Column(name="defect_location_y")
-    private String defectLocationY;
+    private int defectLocationY;
 
 }

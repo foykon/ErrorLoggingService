@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface DefectLocationRepository extends JpaRepository<DefectLocation,Long> {
-    List<DefectLocation> findByVehichleDefect(VehichleDefect vehichleDefect);
+
 }

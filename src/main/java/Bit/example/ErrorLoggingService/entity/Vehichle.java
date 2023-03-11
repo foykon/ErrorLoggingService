@@ -1,38 +1,30 @@
 package Bit.example.ErrorLoggingService.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name="Vehichle")
 public class Vehichle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="vehichle_id")
     private int vehichleId;
+
     @Column(name="vehichle_name")
     private String vehichleName;
 
-    public Vehichle() {
-    }
+    @OneToMany(mappedBy = "vehichleId")
+    private List<VehichleDefect> vehichleDefects;
 
-    public Vehichle(int vehichleId, String vehichleName) {
-        this.vehichleId = vehichleId;
-        this.vehichleName = vehichleName;
-    }
 
-    public int getVehichleId() {
-        return vehichleId;
-    }
-
-    public void setVehichleId(int vehichleId) {
-        this.vehichleId = vehichleId;
-    }
-
-    public String getVehichleName() {
-        return vehichleName;
-    }
-
-    public void setVehichleName(String vehichleName) {
-        this.vehichleName = vehichleName;
-    }
 }

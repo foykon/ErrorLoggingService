@@ -1,8 +1,16 @@
 package Bit.example.ErrorLoggingService.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name="DefectLocation")
 public class DefectLocation {
     @Id
@@ -12,7 +20,7 @@ public class DefectLocation {
 
     @ManyToOne
     @JoinColumn(name = "vehichle_defect_id",referencedColumnName = "vehichle_defect_id")
-    private int vehichleDefectId;
+    private VehichleDefect vehichleDefectId;
 
 
     @Column(name="defect_location_x")
@@ -21,45 +29,4 @@ public class DefectLocation {
     @Column(name="defect_location_y")
     private String defectLocationY;
 
-    public DefectLocation() {
-    }
-
-    public DefectLocation(int defectLocationId, int vehichleDefectId, String defectLocationX, String defectLocationY) {
-        this.defectLocationId = defectLocationId;
-        this.vehichleDefectId = vehichleDefectId;
-        this.defectLocationX = defectLocationX;
-        this.defectLocationY = defectLocationY;
-    }
-
-    public int getDefectLocationId() {
-        return defectLocationId;
-    }
-
-    public void setDefectLocationId(int defectLocationId) {
-        this.defectLocationId = defectLocationId;
-    }
-
-    public int getVehichleDefectId() {
-        return vehichleDefectId;
-    }
-
-    public void setVehichleDefectId(int vehichleDefectId) {
-        this.vehichleDefectId = vehichleDefectId;
-    }
-
-    public String getDefectLocationX() {
-        return defectLocationX;
-    }
-
-    public void setDefectLocationX(String defectLocationX) {
-        this.defectLocationX = defectLocationX;
-    }
-
-    public String getDefectLocationY() {
-        return defectLocationY;
-    }
-
-    public void setDefectLocationY(String defectLocationY) {
-        this.defectLocationY = defectLocationY;
-    }
 }

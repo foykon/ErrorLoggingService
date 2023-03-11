@@ -3,7 +3,9 @@ package Bit.example.ErrorLoggingService.service.impl;
 import Bit.example.ErrorLoggingService.entity.DefectLocation;
 import Bit.example.ErrorLoggingService.repository.DefectLocationRepository;
 import Bit.example.ErrorLoggingService.service.DefectLocationService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DefectLocationServiceImpl implements DefectLocationService {
     private final DefectLocationRepository defectLocationRepository;
 

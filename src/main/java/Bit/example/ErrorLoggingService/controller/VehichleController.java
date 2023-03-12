@@ -1,13 +1,15 @@
 package Bit.example.ErrorLoggingService.controller;
 
+import Bit.example.ErrorLoggingService.dto.VehichleRequest;
+import Bit.example.ErrorLoggingService.dto.VehichleResponse;
 import Bit.example.ErrorLoggingService.entity.Vehichle;
 import Bit.example.ErrorLoggingService.service.VehichleService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequestMapping("/vehichle")
 public class VehichleController {
     private final VehichleService vehichleService;
@@ -17,7 +19,14 @@ public class VehichleController {
     }
 
     @PostMapping("/save")
-    public Vehichle saveVehicle(@RequestBody Vehichle vehichle){
-        return vehichleService.saveVehicle(vehichle);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveVehicle(@RequestBody VehichleRequest vehichleRequest){
+        vehichleService.saveVehicle(vehichleRequest);
+    }
+
+    @GetMapping("/getAll")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VehichleResponse> getAllVehichles(){
+        return vehichleService.getAllVehichles();
     }
 }

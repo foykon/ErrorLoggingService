@@ -1,10 +1,14 @@
 package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
+import Bit.example.ErrorLoggingService.dto.VehichleDefectResponse;
+import Bit.example.ErrorLoggingService.dto.VehichleResponse;
 import Bit.example.ErrorLoggingService.service.VehichleDefectService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/vehichleDefect")
@@ -23,9 +27,16 @@ public class VehichleDefectController {
 
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VehichleDefectResponse> getAllVehichleDefects(){
+        return vehichleDefectService.getAllVehichleDefects();
+    }
+
+
+    /*@GetMapping
     public String message(){
         log.info("sa");
         return "sa" ;
-    }
+    }*/
 }

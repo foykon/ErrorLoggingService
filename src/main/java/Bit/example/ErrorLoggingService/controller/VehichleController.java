@@ -2,7 +2,6 @@ package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.VehichleRequest;
 import Bit.example.ErrorLoggingService.dto.VehichleResponse;
-import Bit.example.ErrorLoggingService.entity.Vehichle;
 import Bit.example.ErrorLoggingService.service.VehichleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

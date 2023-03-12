@@ -20,19 +20,11 @@ public class VehichleDefectServiceImpl implements VehichleDefectService {
     @Override
     public void saveVehichleDefect(VehichleDefectRequest vehichleDefectRequest){
         VehichleDefect vehichleDefect = VehichleDefect.builder()
-                .defectLocations(vehichleDefectRequest.getDefectLocations())
+                .vehichleDefectDescription(vehichleDefectRequest.getVehichleDefectDescription())
                 .vehichleId(vehichleRepository.getReferenceById((long)vehichleDefectRequest.getVehichleId()))
                 .build();
+        vehichleDefectRepository.save(vehichleDefect);
         log.info("vehichle defect {} is added to db",vehichleDefect.getVehichleDefectId());
 
-//        VehichleDefect vehichleDefect=VehichleDefect.builder()
-//                .vehichleId(vehichleRepository.findById((long) vehichleDefectRequest.getVehichleId()))
-//
-//                .vehichleDefectId(vehichleDefectRequest.getVehichleDefectId())
-//                .defectLocations(vehichleDefectRequest.getDefectLocations())
-//
-//
-//
-//        vehichleDefectRepository.save(vehichleDefect);
     }
 }

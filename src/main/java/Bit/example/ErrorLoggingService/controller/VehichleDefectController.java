@@ -1,24 +1,31 @@
 package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
-import Bit.example.ErrorLoggingService.entity.VehichleDefect;
 import Bit.example.ErrorLoggingService.service.VehichleDefectService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/vehichleDefect")
+@Log4j2
 public class VehichleDefectController {
     private final VehichleDefectService vehichleDefectService;
 
     public VehichleDefectController(VehichleDefectService vehichleDefectService) {
         this.vehichleDefectService = vehichleDefectService;
     }
+
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public void saveVehichleDefect(@RequestBody VehichleDefectRequest vehichleDefectRequest){
         vehichleDefectService.saveVehichleDefect(vehichleDefectRequest);
+
+    }
+
+    @GetMapping
+    public String message(){
+        log.info("sa");
+        return "sa" ;
     }
 }

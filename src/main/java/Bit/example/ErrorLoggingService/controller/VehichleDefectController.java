@@ -1,5 +1,6 @@
 package Bit.example.ErrorLoggingService.controller;
 
+import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
 import Bit.example.ErrorLoggingService.entity.VehichleDefect;
 import Bit.example.ErrorLoggingService.service.VehichleDefectService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ public class VehichleDefectController {
         this.vehichleDefectService = vehichleDefectService;
     }
     @PostMapping("/save")
-    public VehichleDefect saveVehichleDefect(@RequestBody VehichleDefect vehichleDefect){
-        return vehichleDefectService.saveVehichleDefect(vehichleDefect);
+    public void saveVehichleDefect(@RequestBody VehichleDefectRequest vehichleDefectRequest){
+        vehichleDefectService.saveVehichleDefect(vehichleDefectRequest);
     }
 }

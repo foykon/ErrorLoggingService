@@ -1,11 +1,11 @@
 package Bit.example.ErrorLoggingService.dto;
 
-import Bit.example.ErrorLoggingService.entity.VehichleDefect;
-import jakarta.persistence.*;
+import Bit.example.ErrorLoggingService.entity.DefectLocation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class VehichleRequest {
+public class VehichleDefectRequest {
+    private int vehichleDefectId;
     private int vehichleId;
-    private String vehichleName;
-    private List<VehichleDefectRequest> vehichleDefects;
-
+    private List<DefectLocation> defectLocations;
+    private String vehichleDefectDescription;
 }

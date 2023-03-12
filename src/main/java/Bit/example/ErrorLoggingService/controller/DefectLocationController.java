@@ -1,15 +1,19 @@
 package Bit.example.ErrorLoggingService.controller;
 
+import Bit.example.ErrorLoggingService.dto.DefectLocationRequest;
+import Bit.example.ErrorLoggingService.dto.DefectLocationResponse;
+import Bit.example.ErrorLoggingService.dto.VehichleDefectResponse;
 import Bit.example.ErrorLoggingService.entity.DefectLocation;
 import Bit.example.ErrorLoggingService.service.DefectLocationService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/defectLocation")
 public class DefectLocationController {
+
     private final DefectLocationService defectLocationService;
 
     public DefectLocationController(DefectLocationService defectLocationService) {
@@ -17,7 +21,15 @@ public class DefectLocationController {
     }
 
     @PostMapping("/save")
-    public DefectLocation saveDefectLocation(@RequestBody DefectLocation defectLocation){
-        return defectLocationService.saveDefectLocation(defectLocation);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveDefectLocation(@RequestBody DefectLocationRequest defectLocationRequest){
+         defectLocationService.saveDefectLocation(defectLocationRequest);
     }
+
+    @GetMapping("/getAll")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DefectLocationResponse> getAllDefectLocations(){
+        return defectLocationService.getAllDefectLocations();
+    }
+
 }

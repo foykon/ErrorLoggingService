@@ -16,6 +16,6 @@ import java.util.List;
 public class VehichleDefectRequest {
     private int vehichleDefectId;
     private int vehichleId;
-    private List<DefectLocation> defectLocations;
+    private List<DefectLocationRequest> defectLocations;
     private String vehichleDefectDescription;
 }

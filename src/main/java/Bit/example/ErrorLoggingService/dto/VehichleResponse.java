@@ -15,5 +15,5 @@ import java.util.List;
 public class VehichleResponse {
     private int vehichleId;
     private String vehichleName;
-    private List<VehichleDefect> vehichleDefects;
+    private List<VehichleDefectResponse> vehichleDefects;
 }

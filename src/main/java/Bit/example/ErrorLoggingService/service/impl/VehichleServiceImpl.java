@@ -26,20 +26,5 @@ public class VehichleServiceImpl implements VehichleService {
         log.info("vehichle {} is added to db",vehichle.getVehichleId());
     }
 
-    @Override
-    public List<VehichleResponse> getAllVehichles() {
-        List<Vehichle> vehichles = vehichleRepository.findAll();
-        log.info("{} vehichles are finded from db",vehichles.stream().count());
-        return vehichles.stream()
-                            .map(this::mapToVehichleResponse)
-                            .toList();
 
-    }
-
-    private VehichleResponse mapToVehichleResponse(Vehichle vehichle) {
-        return VehichleResponse.builder()
-                .vehichleId(vehichle.getVehichleId())
-                .vehichleName(vehichle.getVehichleName())
-                .build();
-    }
 }

@@ -32,25 +32,7 @@ public class DefectLocationServiceImpl implements DefectLocationService {
         log.info("defect location {} is added to db", defectLocation.getVehichleDefectId());
     }
 
-    @Override
-    public List<DefectLocationResponse> getAllDefectLocations() {
-        List<DefectLocation> defectLocations=defectLocationRepository.findAll();
-        log.info("{} defect locations are finded from db",defectLocations.stream().count());
-        return defectLocations.stream()
-                .map(this::mapToDefectLocationResponse)
-                .toList();
-    }
 
-    private DefectLocationResponse mapToDefectLocationResponse(DefectLocation defectLocation) {
-        return DefectLocationResponse.builder()
-                .defectLocationX(defectLocation.getDefectLocationX())
-                .defectLocationY(defectLocation.getDefectLocationY())
-                .defectLocationId(defectLocation.getDefectLocationId())
-                .vehichleDefectId(defectLocation.getVehichleDefectId()
-                        .getVehichleDefectId())
-                .build();
-
-    }
 
 
 }

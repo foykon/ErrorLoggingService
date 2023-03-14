@@ -29,26 +29,4 @@ public class VehichleDefectServiceImpl implements VehichleDefectService {
 
     }
 
-    @Override
-    public List<VehichleDefectResponse> getAllVehichleDefects() {
-        List<VehichleDefect> vehichleDefects = vehichleDefectRepository.findAll();
-        log.info("{} vehichle defects are finded from db",vehichleDefects.stream().count());
-        return vehichleDefects.stream()
-                .map(this::mapToVehichleDefectResponse)
-                .toList();
-
-    }
-
-    private VehichleDefectResponse mapToVehichleDefectResponse(VehichleDefect vehichleDefect) {
-        return VehichleDefectResponse.builder()
-                .vehichleDefectId(vehichleDefect.getVehichleDefectId())
-                .vehichleDefectDescription(vehichleDefect.getVehichleDefectDescription())
-                //iki tane olmasının sebebi benzerlik parantez içindekinin kini gibi
-                .vehichleId(vehichleDefect.getVehichleId()
-                        .getVehichleId())
-                .build();
-
-    }
-
-
 }

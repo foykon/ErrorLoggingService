@@ -18,13 +18,34 @@ public class VehichleServiceImpl implements VehichleService {
 
     @Override
     public void saveVehicle(VehichleRequest vehichleRequest) {
-        Vehichle vehichle = Vehichle.builder()
-                .vehichleName(vehichleRequest.getVehichleName())
-                .build();
-
-        vehichleRepository.save(vehichle);
-        log.info("vehichle {} is added to db",vehichle.getVehichleId());
+        Vehichle mappedVehichle = mappingVehichleRequestToVehichle(vehichleRequest);
+        vehichleRepository.save(mappedVehichle);
+        log.info("vehichle {} is added to db",mappedVehichle.getVehichleId());
     }
+
+    @Override
+    public void updateVehichle(Long id, VehichleRequest vehichleRequest) {
+        Vehichle mappedVehichle = vehichleRepository.getReferenceById(id);
+        mappedVehichle = mappingVehichleRequestToVehichle(vehichleRequest);
+        //To update first we delete then add new one to db
+        vehichleRepository.deleteById(id);
+        vehichleRepository.save(mappedVehichle);
+        log.info("vehichle {} is updated to db",mappedVehichle.getVehichleId());
+    }
+
+    @Override
+    public void deleteVehichle(Long id) {
+        Vehichle vehichleWillBeDeleted = vehichleRepository.getReferenceById(id);
+        vehichleRepository.delete(vehichleWillBeDeleted);
+        log.info("vehichle {} is updated from db",vehichleWillBeDeleted.getVehichleId());
+    }
+
+    public Vehichle mappingVehichleRequestToVehichle(VehichleRequest vehichleRequest){
+        return  Vehichle.builder()
+                    .vehichleName(vehichleRequest.getVehichleName())
+                    .build();
+    }
+
 
 
 }

@@ -22,4 +22,20 @@ public class VehichleController {
         vehichleService.saveVehicle(vehichleRequest);
     }
 
+    @PostMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateVehicle(@PathVariable ("id")Long id, @RequestBody VehichleRequest vehichleRequest){
+        vehichleService.updateVehichle(id,vehichleRequest);
+    }
+
+    @PostMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus. ACCEPTED)
+    public void deleteVehicle(@PathVariable("id") Long id){
+        vehichleService.deleteVehichle(id);
+    }
+
+
+
+
+
 }

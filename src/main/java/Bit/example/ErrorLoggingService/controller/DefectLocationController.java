@@ -23,10 +23,5 @@ public class DefectLocationController {
          defectLocationService.saveDefectLocation(defectLocationRequest);
     }
 
-    @GetMapping("/getAll")
-    @ResponseStatus(HttpStatus.OK)
-    public List<DefectLocationResponse> getAllDefectLocations(){
-        return defectLocationService.getAllDefectLocations();
-    }
 
 }

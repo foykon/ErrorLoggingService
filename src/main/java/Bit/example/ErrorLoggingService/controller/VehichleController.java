@@ -22,9 +22,4 @@ public class VehichleController {
         vehichleService.saveVehicle(vehichleRequest);
     }
 
-    @GetMapping("/getAll")
-    @ResponseStatus(HttpStatus.OK)
-    public List<VehichleResponse> getAllVehichles(){
-        return vehichleService.getAllVehichles();
-    }
 }

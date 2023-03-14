@@ -25,12 +25,6 @@ public class VehichleDefectController {
 
     }
 
-    @GetMapping("/getAll")
-    @ResponseStatus(HttpStatus.OK)
-    public List<VehichleDefectResponse> getAllVehichleDefects(){
-        return vehichleDefectService.getAllVehichleDefects();
-    }
-
 
     /*@GetMapping
     public String message(){

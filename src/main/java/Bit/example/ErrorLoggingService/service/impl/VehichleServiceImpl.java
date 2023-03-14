@@ -25,19 +25,19 @@ public class VehichleServiceImpl implements VehichleService {
 
     @Override
     public void updateVehichle(Long id, VehichleRequest vehichleRequest) {
-        Vehichle mappedVehichle = vehichleRepository.getReferenceById(id);
-        mappedVehichle = mappingVehichleRequestToVehichle(vehichleRequest);
+        Vehichle vehichle = vehichleRepository.getReferenceById(id);
+        vehichle = mappingVehichleRequestToVehichle(vehichleRequest);
         //To update first we delete then add new one to db
         vehichleRepository.deleteById(id);
-        vehichleRepository.save(mappedVehichle);
-        log.info("vehichle {} is updated to db",mappedVehichle.getVehichleId());
+        vehichleRepository.save(vehichle);
+        log.info("vehichle {} is updated. new id is {} ",id, vehichle.getVehichleId());
     }
 
     @Override
     public void deleteVehichle(Long id) {
         Vehichle vehichleWillBeDeleted = vehichleRepository.getReferenceById(id);
         vehichleRepository.delete(vehichleWillBeDeleted);
-        log.info("vehichle {} is updated from db",vehichleWillBeDeleted.getVehichleId());
+        log.info("vehichle {} is deleted from db",id);
     }
 
     public Vehichle mappingVehichleRequestToVehichle(VehichleRequest vehichleRequest){

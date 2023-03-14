@@ -1,6 +1,7 @@
 package Bit.example.ErrorLoggingService.service.impl;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
+import Bit.example.ErrorLoggingService.entity.Vehichle;
 import Bit.example.ErrorLoggingService.entity.VehichleDefect;
 import Bit.example.ErrorLoggingService.repository.VehichleDefectRepository;
 import Bit.example.ErrorLoggingService.repository.VehichleRepository;
@@ -20,13 +21,36 @@ public class VehichleDefectServiceImpl implements VehichleDefectService {
 
     @Override
     public void saveVehichleDefect(VehichleDefectRequest vehichleDefectRequest){
-        VehichleDefect vehichleDefect = VehichleDefect.builder()
-                .vehichleDefectDescription(vehichleDefectRequest.getVehichleDefectDescription())
-                .vehichleId(vehichleRepository.getReferenceById((long)vehichleDefectRequest.getVehichleId()))
-                .build();
-        vehichleDefectRepository.save(vehichleDefect);
-        log.info("vehichle defect {} is added to db",vehichleDefect.getVehichleDefectId());
+        VehichleDefect mappedVehichleDefect = mappingVehichleDefectRequestToVehichleDefect(vehichleDefectRequest);
+        vehichleDefectRepository.save(mappedVehichleDefect);
+        log.info("vehichle defect {} is added to db",mappedVehichleDefect.getVehichleDefectId());
 
+    }
+
+    @Override
+    public void updateVehichleDefect(Long id, VehichleDefectRequest vehichleDefectRequest) {
+        VehichleDefect vehichleDefect = vehichleDefectRepository.getReferenceById(id);
+        vehichleDefect = mappingVehichleDefectRequestToVehichleDefect(vehichleDefectRequest);
+        //To update first we delete then add new one to db
+        vehichleDefectRepository.deleteById(id);
+        vehichleDefectRepository.save(vehichleDefect);
+        log.info("vehichle defect {} is updated. new id is {}",id,vehichleDefect.getVehichleDefectId());
+
+    }
+
+    @Override
+    public void deleteVehichleDefect(Long id) {
+        VehichleDefect vehichleDefectWillBeDeleted = vehichleDefectRepository.getReferenceById(id);
+        vehichleDefectRepository.delete(vehichleDefectWillBeDeleted);
+        log.info("vehichle defect {} is deleted from db",id);
+
+    }
+
+    public VehichleDefect mappingVehichleDefectRequestToVehichleDefect(VehichleDefectRequest vehichleDefectRequest){
+        return VehichleDefect.builder()
+                    .vehichleDefectDescription(vehichleDefectRequest.getVehichleDefectDescription())
+                    .vehichleId(vehichleRepository.getReferenceById((long)vehichleDefectRequest.getVehichleId()))
+                    .build();
     }
 
 }

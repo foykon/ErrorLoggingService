@@ -1,6 +1,7 @@
 package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
+import Bit.example.ErrorLoggingService.dto.VehichleRequest;
 import Bit.example.ErrorLoggingService.service.VehichleDefectService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,18 @@ public class VehichleDefectController {
     public void saveVehichleDefect(@RequestBody VehichleDefectRequest vehichleDefectRequest){
         vehichleDefectService.saveVehichleDefect(vehichleDefectRequest);
 
+    }
+
+    @PostMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateVehicleDefect(@PathVariable ("id")Long id, @RequestBody VehichleDefectRequest vehichleDefectRequest){
+        vehichleDefectService.updateVehichleDefect(id,vehichleDefectRequest);
+    }
+
+    @PostMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus. ACCEPTED)
+    public void deleteVehicleDdfect(@PathVariable("id") Long id){
+        vehichleDefectService.deleteVehichleDefect(id);
     }
 
 

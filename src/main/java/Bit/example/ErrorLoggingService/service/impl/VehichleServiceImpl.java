@@ -25,8 +25,7 @@ public class VehichleServiceImpl implements VehichleService {
 
     @Override
     public void updateVehichle(Long id, VehichleRequest vehichleRequest) {
-        Vehichle vehichle = vehichleRepository.getReferenceById(id);
-        vehichle = mappingVehichleRequestToVehichle(vehichleRequest);
+        Vehichle vehichle = mappingVehichleRequestToVehichle(vehichleRequest);
         //To update first we delete then add new one to db
         vehichleRepository.deleteById(id);
         vehichleRepository.save(vehichle);

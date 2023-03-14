@@ -29,8 +29,7 @@ public class VehichleDefectServiceImpl implements VehichleDefectService {
 
     @Override
     public void updateVehichleDefect(Long id, VehichleDefectRequest vehichleDefectRequest) {
-        VehichleDefect vehichleDefect = vehichleDefectRepository.getReferenceById(id);
-        vehichleDefect = mappingVehichleDefectRequestToVehichleDefect(vehichleDefectRequest);
+        VehichleDefect vehichleDefect = mappingVehichleDefectRequestToVehichleDefect(vehichleDefectRequest);
         //To update first we delete then add new one to db
         vehichleDefectRepository.deleteById(id);
         vehichleDefectRepository.save(vehichleDefect);

@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface VehichleService {
     void saveVehicle(VehichleRequest vehichleRequest);
-    List<VehichleResponse> getAllVehichles();
 }

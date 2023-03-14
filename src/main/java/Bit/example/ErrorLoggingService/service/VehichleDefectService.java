@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface VehichleDefectService {
     void saveVehichleDefect(VehichleDefectRequest vehichleDefectRequest);
-    List<VehichleDefectResponse> getAllVehichleDefects();
 }

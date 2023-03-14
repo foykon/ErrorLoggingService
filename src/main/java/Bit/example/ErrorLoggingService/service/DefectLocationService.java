@@ -7,5 +7,5 @@ import java.util.List;
 public interface DefectLocationService {
     void saveDefectLocation(DefectLocationRequest defectLocationRequest);
 
-    List<DefectLocationResponse> getAllDefectLocations();
+
 }

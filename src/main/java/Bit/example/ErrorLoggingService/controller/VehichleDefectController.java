@@ -1,8 +1,6 @@
 package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
-import Bit.example.ErrorLoggingService.dto.VehichleDefectResponse;
-import Bit.example.ErrorLoggingService.dto.VehichleResponse;
 import Bit.example.ErrorLoggingService.service.VehichleDefectService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

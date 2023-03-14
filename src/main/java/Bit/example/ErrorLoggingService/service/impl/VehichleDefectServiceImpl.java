@@ -1,9 +1,6 @@
 package Bit.example.ErrorLoggingService.service.impl;
 
 import Bit.example.ErrorLoggingService.dto.VehichleDefectRequest;
-import Bit.example.ErrorLoggingService.dto.VehichleDefectResponse;
-import Bit.example.ErrorLoggingService.dto.VehichleResponse;
-import Bit.example.ErrorLoggingService.entity.Vehichle;
 import Bit.example.ErrorLoggingService.entity.VehichleDefect;
 import Bit.example.ErrorLoggingService.repository.VehichleDefectRepository;
 import Bit.example.ErrorLoggingService.repository.VehichleRepository;

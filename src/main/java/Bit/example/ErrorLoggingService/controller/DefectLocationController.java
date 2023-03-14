@@ -1,9 +1,6 @@
 package Bit.example.ErrorLoggingService.controller;
 
 import Bit.example.ErrorLoggingService.dto.DefectLocationRequest;
-import Bit.example.ErrorLoggingService.dto.DefectLocationResponse;
-import Bit.example.ErrorLoggingService.dto.VehichleDefectResponse;
-import Bit.example.ErrorLoggingService.entity.DefectLocation;
 import Bit.example.ErrorLoggingService.service.DefectLocationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
